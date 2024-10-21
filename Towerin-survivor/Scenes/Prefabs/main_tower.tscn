@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://blvjm3fm1547h"]
+
+[ext_resource type="Script" path="res://Scripts/TowerManager.cs" id="1_dkh3v"]
+[ext_resource type="Resource" uid="uid://d11tsicw48on7" path="res://Data/Building/MainTower.tres" id="2_272y1"]
+[ext_resource type="Resource" uid="uid://bd80ihul1o1mj" path="res://Data/Abilities/BaseBullet.tres" id="3_3mcyp"]
+[ext_resource type="Texture2D" uid="uid://bcex16cgwr8xw" path="res://Sprites/towersurvivor_spritesheet.png" id="4_wkj3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svgps"]
+size = Vector2(118, 102)
+
+[node name="MainTower" type="StaticBody2D"]
+script = ExtResource("1_dkh3v")
+towerData = ExtResource("2_272y1")
+startingAbility = ExtResource("3_3mcyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_wkj3h")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_svgps")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=2 format=3 uid="uid://d11tsicw48on7"]
+
+[ext_resource type="Script" path="res://Scripts/Data/TowerData.cs" id="1_6lrmt"]
+
+[resource]
+script = ExtResource("1_6lrmt")
+MaxHealth = 1
+ViewRange = 1
+BuildingCost = 1
+TickRate = 1
+Efficiency = 1

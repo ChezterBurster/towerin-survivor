@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv375qbuj2s2o"]
+
+[ext_resource type="Script" path="res://Scripts/BulletControlller.cs" id="1_ea1ir"]
+[ext_resource type="Texture2D" uid="uid://bcex16cgwr8xw" path="res://Sprites/towersurvivor_spritesheet.png" id="1_mvycv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5ovc"]
+radius = 52.0384
+
+[node name="BaseBullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_ea1ir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mvycv")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e5ovc")

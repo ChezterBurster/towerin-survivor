@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://bd80ihul1o1mj"]
+
+[ext_resource type="Script" path="res://Scripts/Data/AbilityData.cs" id="1_38eh6"]
+[ext_resource type="PackedScene" uid="uid://cv375qbuj2s2o" path="res://Scenes/Prefabs/bulletScene.tscn" id="1_c8j63"]
+
+[resource]
+script = ExtResource("1_38eh6")
+bulletScene = ExtResource("1_c8j63")
+tickRate = 3

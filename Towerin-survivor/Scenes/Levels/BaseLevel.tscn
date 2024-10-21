@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dshshyu8px1c4"]
+
+[ext_resource type="PackedScene" uid="uid://blvjm3fm1547h" path="res://Scenes/Prefabs/main_tower.tscn" id="1_sd0rv"]
+
+[node name="World" type="Node2D"]
+
+[node name="MainTower" parent="." instance=ExtResource("1_sd0rv")]
+position = Vector2(575, 289)
