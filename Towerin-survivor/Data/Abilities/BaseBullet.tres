@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_38eh6")
 bulletScene = ExtResource("1_c8j63")
-tickRate = 3
+tickRate = 1

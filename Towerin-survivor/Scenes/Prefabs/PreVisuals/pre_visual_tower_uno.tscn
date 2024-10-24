@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctg44pibf2lld"]
+
+[ext_resource type="Texture2D" uid="uid://f58i776qxs5t" path="res://Sprites/Torre_1.png" id="1_jhv44"]
+
+[node name="PreVisual_Tower_Uno" type="Sprite2D"]
+modulate = Color(0.65098, 1, 1, 1)
+texture = ExtResource("1_jhv44")

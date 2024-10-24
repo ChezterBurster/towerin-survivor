@@ -7,14 +7,19 @@
 radius = 52.0384
 
 [node name="BaseBullet" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
 gravity_scale = 0.0
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_ea1ir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mvycv")
-hframes = 4
+hframes = 6
 vframes = 2
-frame = 4
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e5ovc")

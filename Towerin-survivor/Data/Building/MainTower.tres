@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=2 format=3 uid="uid://d11tsicw48on7"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=4 format=3 uid="uid://d11tsicw48on7"]
 
 [ext_resource type="Script" path="res://Scripts/Data/TowerData.cs" id="1_6lrmt"]
+[ext_resource type="PackedScene" uid="uid://ctg44pibf2lld" path="res://Scenes/Prefabs/PreVisuals/pre_visual_tower_uno.tscn" id="1_fukq1"]
+[ext_resource type="PackedScene" uid="uid://dgtrmr5ot8bis" path="res://Scenes/Prefabs/tower_uno.tscn" id="1_mx5r4"]
 
 [resource]
 script = ExtResource("1_6lrmt")
+TowerPrefab = ExtResource("1_mx5r4")
+TowerPrevisual = ExtResource("1_fukq1")
 MaxHealth = 1
 ViewRange = 1
 BuildingCost = 1

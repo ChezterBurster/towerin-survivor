@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dshshyu8px1c4"]
+[gd_scene load_steps=4 format=3 uid="uid://dshshyu8px1c4"]
 
-[ext_resource type="PackedScene" uid="uid://blvjm3fm1547h" path="res://Scenes/Prefabs/main_tower.tscn" id="1_sd0rv"]
+[ext_resource type="PackedScene" uid="uid://cc4o8isb70cbr" path="res://Scenes/Prefabs/Base.tscn" id="1_5gtb2"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_6ic4v"]
+[ext_resource type="Resource" uid="uid://d11tsicw48on7" path="res://Data/Building/MainTower.tres" id="2_ymi0k"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_6ic4v")
+towersData = Array[Object]([ExtResource("2_ymi0k")])
+camera = NodePath("Camera2D")
 
-[node name="MainTower" parent="." instance=ExtResource("1_sd0rv")]
-position = Vector2(575, 289)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 320)
+zoom = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_5gtb2")]
+position = Vector2(510, 791)

@@ -1,37 +1,57 @@
 using Godot;
 
-public partial class BulletControlller : Node
+namespace TowerinSurvivor
 {
-	private TowerManager towerManager;
+    public partial class BulletControlller : RigidBody2D
+    {
+        [Export] private float impulse = -500f;
+        private Vector2 targetDirection;
+        private Vector2 startingPosition;
+        private TowerManager towerManager;
+        private AbilityData abilityData;
+        private int damage;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+        public override void _EnterTree()
+        {
+            GlobalPosition = startingPosition;
+            BodyEntered += OnBodyEntered;
+        }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+        public override void _ExitTree()
+        {
 
-	public void InitializeBullet(TowerManager manager)
-	{
-		towerManager = manager;
-	}
+            BodyEntered -= OnBodyEntered;
+        }
 
-	public void SubscribeToTowerManager() => towerManager.TowerTick += OnTowerTick;
-	public void UnsubscribeToTowerManager() => towerManager.TowerTick -= OnTowerTick;
+        private void OnBodyEntered(Node body)
+        {
+            if (GetContactCount() == 0) return;
+            var enemy = body as EnemyBehavior;
+            enemy.GetDamage(damage);
+            towerManager.PushBulletToOwnPool(this, abilityData);
+            towerManager.CallDeferred("remove_child", this);
+        }
 
-	private void OnTowerTick(Vector2 target)
-	{
-		towerManager.AddChild(this);
-		UnsubscribeToTowerManager();
-		ShootAt(target);
-	}
+        // Called every frame. 'delta' is the elapsed time since the previous frame.
+        public override void _Process(double delta)
+        {
+            if (!IsInsideTree()) return;
+            GlobalPosition += targetDirection * impulse * (float)delta;
+        }
 
-	private void ShootAt(Vector2 target)
-	{
+        public void InitializeBullet(TowerManager manager, TowerData towerData, AbilityData abilityData)
+        {
+            towerManager = manager;
+            this.abilityData = abilityData;
+            startingPosition = towerManager.GlobalPosition;
+            damage = towerData.Efficiency;
+            towerManager.RemoveChild(this);
+        }
 
-	}
-
+        public void OnTowerTick(Vector2 target)
+        {
+            targetDirection = (startingPosition - target).Normalized();
+            towerManager.AddChild(this);
+        }
+    }
 }

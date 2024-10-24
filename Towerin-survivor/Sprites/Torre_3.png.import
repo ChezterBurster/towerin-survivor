@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcex16cgwr8xw"
-path="res://.godot/imported/towersurvivor_spritesheet.png-d92b0056e0a4ebefa49772a78ed53a1d.ctex"
+uid="uid://cbml4uvv5o4yy"
+path="res://.godot/imported/Torre_3.png-03f79b88b6e68f1a05c1fb641192637d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/towersurvivor_spritesheet.png"
-dest_files=["res://.godot/imported/towersurvivor_spritesheet.png-d92b0056e0a4ebefa49772a78ed53a1d.ctex"]
+source_file="res://Sprites/Torre_3.png"
+dest_files=["res://.godot/imported/Torre_3.png-03f79b88b6e68f1a05c1fb641192637d.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

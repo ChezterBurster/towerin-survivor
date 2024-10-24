@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c27wsrdsytljy"]
+
+[ext_resource type="Texture2D" uid="uid://bcex16cgwr8xw" path="res://Sprites/towersurvivor_spritesheet.png" id="1_qfm4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsjo6"]
+radius = 43.2897
+
+[node name="Enemy" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xsjo6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qfm4y")
+offset = Vector2(23.65, 0)
+hframes = 6
+vframes = 2
+frame = 2

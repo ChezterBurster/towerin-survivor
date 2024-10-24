@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgtrmr5ot8bis"]
+
+[ext_resource type="Texture2D" uid="uid://f58i776qxs5t" path="res://Sprites/Torre_1.png" id="1_0um35"]
+[ext_resource type="Script" path="res://Scripts/TowerManager.cs" id="2_d721h"]
+[ext_resource type="Resource" uid="uid://bd80ihul1o1mj" path="res://Data/Abilities/BaseBullet.tres" id="3_is240"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ld8k7"]
+radius = 800.0
+
+[node name="Tower_uno" type="RigidBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, 1)
+polygon = PackedVector2Array(-67, -121, 173, -1, -67, 119, -178, 63, -83, 15, -83, -17, -179, -65)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0um35")
+
+[node name="TowerManager" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_d721h")
+startingAbility = ExtResource("3_is240")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerManager"]
+shape = SubResource("CircleShape2D_ld8k7")
