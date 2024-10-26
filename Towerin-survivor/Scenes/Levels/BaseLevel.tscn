@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dshshyu8px1c4"]
+[gd_scene load_steps=5 format=3 uid="uid://dshshyu8px1c4"]
 
 [ext_resource type="PackedScene" uid="uid://cc4o8isb70cbr" path="res://Scenes/Prefabs/Base.tscn" id="1_5gtb2"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_6ic4v"]
 [ext_resource type="Resource" uid="uid://d11tsicw48on7" path="res://Data/Building/MainTower.tres" id="2_ymi0k"]
+[ext_resource type="PackedScene" uid="uid://vcxxdfbb0lmm" path="res://Scenes/Prefabs/Spawner.tscn" id="4_xxd0t"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_6ic4v")
@@ -15,3 +16,6 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_5gtb2")]
 position = Vector2(510, 791)
+
+[node name="Spawner" parent="." instance=ExtResource("4_xxd0t")]
+position = Vector2(-365, 427)

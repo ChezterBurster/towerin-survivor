@@ -13,12 +13,20 @@ namespace TowerinSurvivor
         private readonly Dictionary<AbilityData, Stack<Node>> bulletPool = new();
         public int tickCounter = 0;
         private float tickTimer = 0;
+        private int life;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
             abilities.Add(startingAbility);
             InitializeBulletPool();
+            life = towerData.MaxHealth;
+            GameManager.Instance.EnemyDied += HandleEnemyDied;
+        }
+
+        public override void _ExitTree()
+        {
+            GameManager.Instance.EnemyDied -= HandleEnemyDied;
         }
 
         public void SetTowerData(TowerData towerData)
@@ -119,9 +127,31 @@ namespace TowerinSurvivor
             bulletStack.Push(bullet);
         }
 
-        public void RemoveTarget()
+        private void RemoveTarget()
         {
             Target = null;
         }
+
+        public void ReceiveDamage(int damage)
+        {
+            life -= damage;
+            if (life <= 0)
+                DestroyTower();
+        }
+
+        private void DestroyTower()
+        {
+            GameManager.Instance.EmitSignal("TowerDestroyed");
+            GetParent().RemoveChild(this);
+            GetParent().QueueFree();
+            QueueFree();
+        }
+
+        private void HandleEnemyDied(Node2D enemy)
+        {
+            if (enemy == Target)
+                RemoveTarget();
+        }
+
     }
 }

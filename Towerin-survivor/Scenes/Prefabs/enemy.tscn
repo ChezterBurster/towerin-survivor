@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c27wsrdsytljy"]
+[gd_scene load_steps=4 format=3 uid="uid://c27wsrdsytljy"]
 
-[ext_resource type="Texture2D" uid="uid://bcex16cgwr8xw" path="res://Sprites/towersurvivor_spritesheet.png" id="1_qfm4y"]
+[ext_resource type="Script" path="res://Scripts/EnemyBehavior.cs" id="1_s3q31"]
+[ext_resource type="Texture2D" uid="uid://7rvukqdjnhtl" path="res://Sprites/Enemy.png" id="2_ftbwb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xsjo6"]
-radius = 43.2897
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akimk"]
+size = Vector2(224, 144)
 
 [node name="Enemy" type="RigidBody2D"]
 collision_layer = 2
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_s3q31")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xsjo6")
+shape = SubResource("RectangleShape2D_akimk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qfm4y")
-offset = Vector2(23.65, 0)
-hframes = 6
-vframes = 2
-frame = 2
+texture = ExtResource("2_ftbwb")

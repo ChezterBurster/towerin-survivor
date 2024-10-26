@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace TowerinSurvivor
@@ -10,34 +11,44 @@ namespace TowerinSurvivor
         private TowerManager towerManager;
         private AbilityData abilityData;
         private int damage;
+        private int resetTime = 10;
+        private float timer = 0f;
 
         public override void _EnterTree()
         {
             GlobalPosition = startingPosition;
-            BodyEntered += OnBodyEntered;
+            BodyEntered += HandleBodyEntered;
         }
 
         public override void _ExitTree()
         {
-
-            BodyEntered -= OnBodyEntered;
+            BodyEntered -= HandleBodyEntered;
         }
 
-        private void OnBodyEntered(Node body)
+        private void HandleBodyEntered(Node body)
         {
             if (GetContactCount() == 0) return;
             var enemy = body as EnemyBehavior;
             enemy.GetDamage(damage);
-            towerManager.PushBulletToOwnPool(this, abilityData);
-            towerManager.CallDeferred("remove_child", this);
+            ResetBullet();
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(double delta)
         {
-            if (!IsInsideTree()) return;
+            timer += (float)delta;
+            if (timer >= resetTime)
+                ResetBullet();
             GlobalPosition += targetDirection * impulse * (float)delta;
         }
+
+        private void ResetBullet()
+        {
+            towerManager.PushBulletToOwnPool(this, abilityData);
+            towerManager.CallDeferred("remove_child", this);
+            timer = 0f;
+        }
+
 
         public void InitializeBullet(TowerManager manager, TowerData towerData, AbilityData abilityData)
         {

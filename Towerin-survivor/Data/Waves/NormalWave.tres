@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=8 format=3 uid="uid://dkqslsol0mor8"]
+
+[ext_resource type="Script" path="res://Scripts/Data/WaveData.cs" id="1_5twyg"]
+[ext_resource type="Texture2D" uid="uid://crfs85ex6q1ww" path="res://Sprites/Elite.png" id="1_6vkh8"]
+[ext_resource type="Script" path="res://Scripts/Data/EnemyData.cs" id="1_sn7oy"]
+[ext_resource type="PackedScene" uid="uid://c27wsrdsytljy" path="res://Scenes/Prefabs/enemy.tscn" id="2_3mr4x"]
+[ext_resource type="Texture2D" uid="uid://7rvukqdjnhtl" path="res://Sprites/Enemy.png" id="4_137cm"]
+
+[sub_resource type="Resource" id="Resource_w84lb"]
+script = ExtResource("1_sn7oy")
+MaxHealth = 20
+Speed = 30.0
+Damage = 2
+Dineros = 0
+Experience = 0
+Sprite = ExtResource("1_6vkh8")
+
+[sub_resource type="Resource" id="Resource_1sm70"]
+script = ExtResource("1_sn7oy")
+MaxHealth = 10
+Speed = 50.0
+Damage = 1
+Dineros = 0
+Experience = 0
+Sprite = ExtResource("4_137cm")
+
+[resource]
+script = ExtResource("1_5twyg")
+enemyPrefab = ExtResource("2_3mr4x")
+normalEnemy = SubResource("Resource_1sm70")
+eliteEnemy = SubResource("Resource_w84lb")
+TimeBetweenWaves = 30
+EnemiesPerWave = 1
+EliteIncrement = 1
+EliteInterval = 3
